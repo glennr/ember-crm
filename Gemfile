@@ -9,6 +9,9 @@ gem 'pg'
 gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
+gem 'ffaker'
+
+gem 'puma' #FU webrick
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
