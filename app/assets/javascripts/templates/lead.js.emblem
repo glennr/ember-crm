@@ -1,32 +1,39 @@
-article#lead
-  h1= model.fullName
-  
-  p
-    ' Name:
-    model.fullName
+outlet
 
-  p
-    ' Email:
-    model.email
+unless isEditing
 
-  p
-    ' Phone:
-    model.phone
+  article#lead
+    h1
+      model.fullName
+      link-to 'edit' 'lead.edit' model classNames='edit'
+    
+    p
+      ' Name:
+      model.fullName
 
-  p
-    label Status:
-    '
-    view Ember.Select content=App.Lead.STATUSES value=model.status
+    p
+      ' Email:
+      model.email
 
-  p
-    label Notes:
-    '
-    view Ember.TextArea value=model.notes
+    p
+      ' Phone:
+      model.phone
 
-  p
-    input type='submit' value='Save Changes' click='saveChanges'
-    if isDirty
-      .unsaved unsaved changes
-    if isSaving
-      .saving saving...
-      
+    p
+      label Status:
+      '
+      view Ember.Select content=App.Lead.STATUSES value=model.status
+
+    p
+      label Notes:
+      '
+      view Ember.TextArea value=model.notes
+
+    p
+      a.delete href='#' click='delete' delete
+      input type='submit' value='Save Changes' click='saveChanges'
+      if showUnsavedMessage
+        .unsaved unsaved changes
+      if isSaving
+        .saving saving...
+
